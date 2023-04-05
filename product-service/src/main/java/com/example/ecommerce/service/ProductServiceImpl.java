@@ -31,6 +31,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<ProductResponse> getAllProducts() {
         List<Product> product = productRepository.findAll();
+        log.info("Product list -> {}", product);
         return product.stream().map(this::mapToProductResponse).toList();
     }
 
