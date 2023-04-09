@@ -1,8 +1,7 @@
 package com.example.ecommerce.inventoryservice;
 
 import com.example.ecommerce.inventoryservice.model.Inventory;
-import com.example.ecommerce.inventoryservice.model.repository.InventoryRepository;
-import lombok.RequiredArgsConstructor;
+import com.example.ecommerce.inventoryservice.repository.InventoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,11 +21,11 @@ public class InventoryServiceApplication {
 		return args -> {
 			Inventory inventory = new Inventory();
 			inventory.setSkuCode("iphone_13");
-			inventory.setQuantity(30);
+			inventory.setQuantity(20);
 			inventoryRepository.save(inventory);
 			Inventory inventory1 = new Inventory();
 			inventory1.setSkuCode("camon_19");
-			inventory1.setQuantity(25);
+			inventory1.setQuantity(5);
 			inventoryRepository.save(inventory1);
 		};
 
