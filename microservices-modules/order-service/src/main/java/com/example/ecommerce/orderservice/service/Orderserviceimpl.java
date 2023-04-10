@@ -22,7 +22,7 @@ import java.util.UUID;
 public class Orderserviceimpl implements OrderService{
 
     private final Orderrepository orderrepository;
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
 
     @Override
     public void placeOrder(OrderRequest orderRequest) {
@@ -39,8 +39,8 @@ public class Orderserviceimpl implements OrderService{
 
 
         /* call inventory service to check if the product is stock */
-          InventoryResponse[] responses =   webClient.get()
-                            .uri("http://localhost:8082/api/inventory", uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
+          InventoryResponse[] responses =   webClientBuilder.build().get()
+                            .uri("http://inventory-service/api/inventory", uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
                             .retrieve()
                             .bodyToMono(InventoryResponse[].class)
                             .block();
